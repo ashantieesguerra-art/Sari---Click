@@ -1,4 +1,4 @@
-// Replace these with your actual credentials from the Firebase Console
+
 const firebaseConfig = {
   apiKey: "AIzaSyBESjvKB9_YL2dcAm-ZQ_QCEb9trXakn1M",
   authDomain: "sariclick-d773c.firebaseapp.com",
@@ -11,11 +11,11 @@ const firebaseConfig = {
 };
 
 
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// Helper to get the correct store path
+
 function getStorePath(storeId) {
     return database.ref('stores/' + storeId);
 }

@@ -1,8 +1,5 @@
-// REMOVED: Firebase.initializeApp is already in firebase-config.js
-
-// Function to calculate and update the Admin UI
 function monitorStores() {
-    // We use 'database' because it was defined as a global variable in firebase-config.js
+   
     database.ref('stores').on('value', (snapshot) => {
         const stores = snapshot.val() || {};
         
@@ -21,7 +18,6 @@ function monitorStores() {
                 storeRevenue += parseFloat(order.totalAmount || 0);
             });
 
-            // Check if element exists before updating to avoid errors
             const revEl = document.getElementById(`s${i}-rev`);
             const orderEl = document.getElementById(`s${i}-orders`);
             
@@ -37,5 +33,4 @@ function monitorStores() {
     });
 }
 
-// Start monitoring
 monitorStores();

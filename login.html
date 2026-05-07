@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SariClick Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-box {
+            max-width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .btn-login {
+            background: #90b3fa;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body style="background: #f4f7fe;">
+    <div class="login-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/607/607452.png" width="60">
+        <h2>Admin Access</h2>
+        <p>Please enter your 4-digit PIN</p>
+        <input type="password" id="admin-pin" placeholder="••••" maxlength="4">
+        <button class="btn-login" onclick="checkLogin()">Login to Dashboard</button>
+    </div>
+
+    <script>
+        function checkLogin() {
+            const pin = document.getElementById('admin-pin').value;
+            // You can change "1234" to any PIN you like
+            if(pin === "1234") { 
+                sessionStorage.setItem('vendorLoggedIn', 'true');
+                window.location.href = 'vendor2.html';
+            } else {
+                alert("Incorrect PIN! Access Denied.");
+            }
+        }
+    </script>
+</body>
+</html>

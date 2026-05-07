@@ -1,0 +1,295 @@
+* { 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', sans-serif;
+    accent-color: rgb(5, 24, 83);  
+    margin: 0; 
+    padding: 0;
+}
+
+body { 
+    background: #f4f7f9; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+/* Home Page */
+.hero-container { 
+    text-align: center; 
+    margin: auto; 
+}
+
+.mode-selection { 
+    display: flex; 
+    gap: 30px; 
+    padding: 20px; 
+    justify-content: center; 
+}
+
+.card { 
+    padding: 50px; 
+    border-radius: 25px; 
+    color: rgb(19, 1, 1); 
+    cursor: pointer; 
+    transition: 0.3s; 
+    width: 350px; 
+}
+
+.card:hover { 
+    transform: scale(1.05); 
+}
+
+.vendor-card { 
+    background: #90b3fa; 
+}
+
+.customer-card { 
+    background: #ffa9e2; 
+}
+
+.icon { 
+    font-size: 60px; 
+    margin-bottom: 15px; 
+}
+
+/* Kiosk Layouts */
+.top-nav { 
+    display: flex; 
+    align-items: center; 
+    padding: 20px 40px; 
+    background: white; 
+    border-bottom: 1px solid #ddd; 
+}
+
+.container { 
+    display: flex; 
+    gap: 20px; 
+    padding: 20px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    width: 100%; 
+}
+
+.card-panel { 
+    background: white; 
+    border-radius: 20px; 
+    padding: 25px; 
+    flex: 1; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    min-height: 400px; 
+}
+
+.main-panel { 
+    flex: 2; 
+}
+
+/* Elements */
+label { 
+    display: block; 
+    margin-top: 15px; 
+    font-weight: bold; 
+}
+
+input, 
+select { 
+    width: 100%; 
+    padding: 12px; 
+    margin-top: 5px; 
+    border-radius: 10px; 
+    border: 1px solid #ccc; 
+}
+
+.row { 
+    display: flex; 
+    gap: 10px; 
+}
+
+.btn-blue { 
+    background: #1a66ff; 
+    color: white; 
+    border: none; 
+    padding: 15px; 
+    border-radius: 10px; 
+    width: 100%; 
+    margin-top: 20px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+.btn-green { 
+    background: #00a844; 
+    color: white; 
+    border: none; 
+    padding: 15px; 
+    border-radius: 10px; 
+    width: 100%; 
+    margin-top: 20px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+.back-btn { 
+    background: #eee; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    margin-right: 20px; 
+}
+
+.cart-btn { 
+    background: #00a844; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 10px; 
+    margin-left: auto; 
+}
+
+/* List Styling */
+.product-item { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 15px 0; 
+    border-bottom: 1px solid #eee; 
+}
+
+    .modal { 
+        position: fixed; 
+        top:0; 
+        left:0; 
+        width:100%; 
+        height:100%; 
+        background:rgba(0,0,0,0.5); 
+        display:flex; 
+        justify-content:center; 
+        align-items:center; 
+}
+
+        .receipt-content { 
+    background:white; 
+    padding:30px; 
+    border-radius:15px; 
+    width:300px; 
+    text-align:center; 
+}
+
+
+.delete-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #cc0000;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Keeps text and button aligned */
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Add this at the very end of style.css */
+
+/* This layout helps the buttons sit side-by-side in the modal */
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media print {
+    /* Hide everything on the screen */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Show only the receipt and its content */
+    #printable-receipt, #printable-receipt * {
+        visibility: visible;
+    }
+
+    /* Move the receipt to the top left of the paper */
+    #printable-receipt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+    }
+
+    /* Hide the 'Print' and 'Done' buttons on the physical paper */
+    .modal-buttons {
+        display: none;
+    }
+}
+
+/* Styling the Filter Chips to match your back-btn style */
+.chip-btn {
+    background: #eee;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.chip-btn.active {
+    background: #90b3fa; /* Matching your vendor card blue */
+    color: white;
+}
+
+.chip-btn:hover {
+    background: #ddd;
+}
+
+/* Make sure rows stay aligned in the form */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+/* Styling the Filter Chips to match your back-btn style */
+.chip-btn {
+    background: #eee;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.chip-btn.active {
+    background: #90b3fa; /* Matching your vendor card blue */
+    color: white;
+}
+
+.chip-btn:hover {
+    background: #ddd;
+}
+
+/* Make sure rows stay aligned in the form */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+

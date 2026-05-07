@@ -1,4 +1,3 @@
-// PROTECT THE PAGE: Redirect to login if not authenticated
 if (sessionStorage.getItem('vendorLoggedIn') !== 'true') {
     window.location.href = 'login.html';
 }
@@ -7,7 +6,6 @@ const STORE_ID = 'store_001';
 let products = [];
 let currentCategory = 'All';
 
-// 1. Real-time Listener
 database.ref(`stores/${STORE_ID}/inventory`).on('value', (snapshot) => {
     const data = snapshot.val();
     if (data) {
@@ -21,26 +19,22 @@ database.ref(`stores/${STORE_ID}/inventory`).on('value', (snapshot) => {
     window.updateList(); 
 });
 
-// 2. Render Function with Sorting & Alerts
 window.updateList = function() {
     const list = document.getElementById('product-list');
     const searchInput = document.getElementById('vendor-search');
-    const sortOrder = document.getElementById('sort-order').value; // Get sort choice
+    const sortOrder = document.getElementById('sort-order').value; 
     const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
     
-    // --- STEP A: SORTING LOGIC ---
-    let sortedProducts = [...products]; // Create a copy to sort
+    let sortedProducts = [...products];
     
     if (sortOrder === "low-stock") {
         sortedProducts.sort((a, b) => parseInt(a.qty) - parseInt(b.qty));
     } else if (sortOrder === "price-high") {
         sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
     } else {
-        // Default: Alphabetical by Name
         sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    // --- STEP B: FILTERING ---
     const filtered = sortedProducts.filter(p => {
         const matchesCat = currentCategory === 'All' || p.category === currentCategory;
         const matchesSearch = p.name.toLowerCase().includes(searchQuery);
@@ -49,7 +43,6 @@ window.updateList = function() {
 
     document.getElementById('count').innerText = filtered.length;
 
-    // --- STEP C: RENDERING ---
     list.innerHTML = filtered.map((p) => {
         const isLow = parseInt(p.qty) <= (parseInt(p.alertLevel) || 5);
         const itemStyle = isLow 
@@ -73,7 +66,6 @@ window.updateList = function() {
     }).join('');
 };
 
-// 3. Add Product Logic
 const prodForm = document.getElementById('product-form');
 if (prodForm) {
     prodForm.onsubmit = function(e) {
@@ -95,7 +87,6 @@ if (prodForm) {
     };
 }
 
-// 4. Global Functions
 window.filterBy = (cat) => {
     currentCategory = cat;
     document.querySelectorAll('.chip-btn').forEach(btn => {

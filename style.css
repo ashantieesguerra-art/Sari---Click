@@ -149,7 +149,6 @@ select {
     margin-left: auto; 
 }
 
-/* List Styling */
 .product-item { 
     display: flex; 
     justify-content: space-between; 
@@ -211,17 +210,14 @@ select {
 }
 
 @media print {
-    /* Hide everything on the screen */
     body * {
         visibility: hidden;
     }
 
-    /* Show only the receipt and its content */
     #printable-receipt, #printable-receipt * {
         visibility: visible;
     }
 
-    /* Move the receipt to the top left of the paper */
     #printable-receipt {
         position: absolute;
         left: 0;
@@ -237,7 +233,6 @@ select {
     }
 }
 
-/* Styling the Filter Chips to match your back-btn style */
 .chip-btn {
     background: #eee;
     border: none;
@@ -250,7 +245,7 @@ select {
 }
 
 .chip-btn.active {
-    background: #90b3fa; /* Matching your vendor card blue */
+    background: #90b3fa; 
     color: white;
 }
 
@@ -265,7 +260,6 @@ select {
     margin-bottom: 10px;
 }
 
-/* Styling the Filter Chips to match your back-btn style */
 .chip-btn {
     background: #eee;
     border: none;
@@ -278,7 +272,7 @@ select {
 }
 
 .chip-btn.active {
-    background: #90b3fa; /* Matching your vendor card blue */
+    background: #90b3fa; 
     color: white;
 }
 
@@ -286,7 +280,6 @@ select {
     background: #ddd;
 }
 
-/* Make sure rows stay aligned in the form */
 .input-group {
     display: flex;
     flex-direction: column;

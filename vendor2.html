@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* Small style for the logout button to keep it clean */
         .logout-btn {
             background: transparent;
             color: white;
@@ -129,7 +128,6 @@
     <script src="vendor2.js"></script>
     
     <script>
-        // Inline Logout logic to make sure the button works immediately
         window.logout = function() {
             if(confirm("Are you sure you want to logout?")) {
                 sessionStorage.removeItem('vendorLoggedIn');

@@ -1,11 +1,3 @@
-const defaultItems = [
-    { name: "Ligo Sardines", price: "45.00", category: "Others" },
-    { name: "Lucky Me Pancit Canton", price: "25.00", category: "Instant Noodles" },
-    { name: "C2 Apple Big", price: "39.00", category: "Drinks" },
-    { name: "Skyflakes Plain", price: "8.00", category: "Snacks" },
-    { name: "Sunsilk Pink Shampoo", price: "8.00", category: "Personal Care" }
-];
-
 let products = [];
 let cart = [];
 let currentCategory = 'All';

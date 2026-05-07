@@ -81,7 +81,6 @@ window.continueShopping = () => {
     window.render(); 
 };
 
-// Start the listener
 database.ref('stores/store_001/inventory').on('value', (snapshot) => {
     const data = snapshot.val();
     if (data) {

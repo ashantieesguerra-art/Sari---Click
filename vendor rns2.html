@@ -47,16 +47,15 @@
 
     <script>
         const STORE_ID = 'store_001';
-        let salesChart = null; // Global variable for chart instance
+        let salesChart = null; 
 
-        // Listen to the 'orders' folder in Firebase
+   
         database.ref(`stores/${STORE_ID}/orders`).on('value', (snapshot) => {
             const ordersData = snapshot.val();
             const list = document.getElementById('order-list');
             let totalRev = 0;
             let orderCount = 0;
             
-            // For Feature #3: Count occurrences of each item
             const itemSalesCount = {};
 
             if (ordersData) {
@@ -66,7 +65,6 @@
                 list.innerHTML = ordersArray.slice().reverse().map(order => {
                     totalRev += parseFloat(order.totalAmount);
                     
-                    // Aggregate items for chart
                     order.items.forEach(itemName => {
                         itemSalesCount[itemName] = (itemSalesCount[itemName] || 0) + 1;
                     });
@@ -88,7 +86,6 @@
                 updateSalesChart(itemSalesCount);
 
             } else {
-                // Feature #6: Empty State Illustration
                 list.innerHTML = `
                     <div style="text-align:center; padding: 40px; color: #999;">
                         <img src="https://cdn-icons-png.flaticon.com/512/5089/5089733.png" width="80" style="opacity: 0.5; margin-bottom: 15px;">
